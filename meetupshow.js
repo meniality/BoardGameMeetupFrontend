@@ -43,7 +43,7 @@ fetch(`http://localhost:3000/meetups/${id}`)
   
   image.src = meetup.boardgame.image
   
-  boardgameName.innerText = meetup.boardgame.name
+  boardgameName.innerHTML = `<a href="http://localhost:3001/boardgameshow.html?id=${meetup.boardgame.id}">${meetup.boardgame.name}`
   location.innerText = `Where: ${meetup.location}`
 
   
