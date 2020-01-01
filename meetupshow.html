@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="meetupshow.js" defer></script>
+</head>
+<body>
+  <form method="post" action="http://localhost:3000/user_meetups">
+    <label>Add User to Meetup</label><br>
+    <select name='user_id' id='userDropdown'></select>
+    <input type='hidden' id='meetupid' name='meetup_id'>
+    <input type="submit">
+  </form>
+</body>
+</html>
