@@ -13,12 +13,13 @@ fetch('http://localhost:3000/meetups')
     const date = document.createElement('p')
     
 
-    meetupCard.class="card"
+    meetupCard.className="card"
     meetupCard.href=`meetupshow.html?id=${meetup.id}`
     meetupCard.style="cursor: pointer"
     infoContainer.class="cardContainer"
 
     image.src = meetup.boardgame.image
+    image.className="image"
 
     boardgameName.innerText = meetup.boardgame.name
     location.innerText = `Where: ${meetup.location}`
