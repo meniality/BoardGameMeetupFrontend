@@ -3,7 +3,6 @@ cardContainerDIV = document.querySelector("#cardContainerDIV")
 fetch('http://localhost:3000/meetups')
 .then(response => response.json())
 .then(meetups => {
-  console.log(meetups)
   
   meetups.map(meetup => {
     const meetupCard = document.createElement('a')
@@ -34,10 +33,8 @@ fetch('http://localhost:3000/meetups')
     infoContainer.append(boardgameName, location, date)
     meetupCard.append(image, infoContainer)
     cardContainerDIV.appendChild(meetupCard)
-
-  }) 
-  
-  })
+  })  
+})
 
   const boardGameDropdown = document.querySelector("#boardGamesSelect")
   

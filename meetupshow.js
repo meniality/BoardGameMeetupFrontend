@@ -4,19 +4,7 @@ const id = searchParams.get('id')
 const meetupID = document.querySelector('#meetupid')
 meetupID.value = id
 
-const deleteMeetupButton = document.createElement('button')
-const deleteButtonDIV = document.querySelector('#deleteButtonDIV')
-
-deleteMeetupButton.innerText = "Delete Meetup"
-deleteMeetupButton.id = "deleteButton"
-deleteMeetupButton.addEventListener('click', () => {
-  deleteMeetupSubmit(id)
-  window.location ="http://localhost:3001/index.html"
-})
-
-deleteButtonDIV.appendChild(deleteMeetupButton)
-
-
+makeDeleteMeetupButton()
 
 fetch(`http://localhost:3000/meetups/${id}`)
 .then(response => response.json())
@@ -78,7 +66,8 @@ fetch(`http://localhost:3000/meetups/${id}`)
   infoContainer.append(boardgameName, location, date)
   meetupCard.append(image, infoContainer)
   card_attendeesDIV.appendChild(meetupCard)
-  
+  document.body.appendChild(card_attendeesDIV)
+
   const attendees = document.createElement('div')
   attendees.appendChild(attendingH3)
 
@@ -120,31 +109,44 @@ fetch(`http://localhost:3000/users`)
 }))
 
 
-  function deleteUserMeetup(id){
-    fetch(`http://localhost:3000/user_meetups/${id}`,{
-      method: 'delete'
-    })
-  }
-    
-  function unhideUpdateTextField(element){
-    document.querySelector('#updateLocationTextField').style.display = "inline"
-    document.querySelector('#updateLocationSubmitButton').style.display = "inline"
-  }
+function deleteUserMeetup(id){
+  fetch(`http://localhost:3000/user_meetups/${id}`,{
+    method: 'delete'
+  })
+}
+  
+function unhideUpdateTextField(element){
+  document.querySelector('#updateLocationTextField').style.display = "inline"
+  document.querySelector('#updateLocationSubmitButton').style.display = "inline"
+}
 
-  function updateLocationSumbit(id, value){
-    fetch(`http://localhost:3000/meetups/${id}`,{
-      method:"put",
-      headers:{
-        'Content-Type':'application/json',
-        'Accept':'application/json'
-      },
-      body:JSON.stringify({location: value})
-    })
-  }
+function updateLocationSumbit(id, value){
+  fetch(`http://localhost:3000/meetups/${id}`,{
+    method:"put",
+    headers:{
+      'Content-Type':'application/json',
+      'Accept':'application/json'
+    },
+    body:JSON.stringify({location: value})
+  })
+}
 
-  function deleteMeetupSubmit(id){
-    fetch(`http://localhost:3000/meetups/${id}`,{
-      method:"delete"
-    })
-    
-  }
+function deleteMeetupSubmit(id){
+  fetch(`http://localhost:3000/meetups/${id}`,{
+    method:"delete"
+  })
+}
+
+function makeDeleteMeetupButton(){
+  const deleteMeetupButton = document.createElement('button')
+  const deleteButtonDIV = document.querySelector('#deleteButtonDIV')
+
+  deleteMeetupButton.innerText = "Delete Meetup"
+  deleteMeetupButton.id = "deleteButton"
+  deleteMeetupButton.addEventListener('click', () => {
+    deleteMeetupSubmit(id)
+    window.location ="http://localhost:3001/index.html"
+  })
+
+  deleteButtonDIV.appendChild(deleteMeetupButton)
+}
