@@ -9,63 +9,18 @@ makeDeleteMeetupButton()
 fetch(`http://localhost:3000/meetups/${id}`)
 .then(response => response.json())
 .then(meetup => {
-  
-  const meetupCard = document.createElement('a')
-  const infoContainer = document.createElement('div')
-  const image = document.createElement('img')
-  const boardgameName = document.createElement('h4')
-  const location = document.createElement('p')
-  const updateLocation = document.createElement('button')
-  const updateLocationTextField = document.createElement('input')
-  const updateLocationSubmitButton = document.createElement('button')
-  const date = document.createElement('p')
+
+  // meetupID.value = meetup.id
+
   const card_attendeesDIV = document.createElement('div')
   const attendingH3 = document.createElement('h3')
-  
-  card_attendeesDIV.id="cardAttendees"
 
+  card_attendeesDIV.id="cardAttendees"
   attendingH3.innerText="Current Players Attending"
 
-  meetupID.value = meetup.id
-  meetupCard.className="card"
-  meetupCard.style.display = "block"
-
-  infoContainer.className="cardContainer"
+  card_attendeesDIV.appendChild(makeMeetupCard(meetup))
   
-  image.src = meetup.boardgame.image
   
-  boardgameName.innerHTML = `<a href="http://localhost:3001/boardgameshow.html?id=${meetup.boardgame.id}">${meetup.boardgame.name}`
-  boardgameName.className = "boardGameInfo"
-
-  location.innerText = `Where: ${meetup.location}`
-  location.className = "boardGameInfo"
-
-  
-  updateLocation.innerText = "update"
-  updateLocation.addEventListener('click', () =>{
-    event.target.remove()
-    unhideUpdateTextField(updateLocationTextField)
-  })
-  
-  date.innerText = `On ${meetup.date.split("-")[1]}/${meetup.date.split("-")[2]}/${meetup.date.split("-")[0]} at ${meetup.time}`
-  date.className = "boardGameInfo"
-  
-  updateLocationTextField.style.display = "none"
-  updateLocationTextField.id = "updateLocationTextField"
-
-  updateLocationSubmitButton.innerText = "submit"
-  updateLocationSubmitButton.style.display = "none"
-  updateLocationSubmitButton.id ="updateLocationSubmitButton"
-  updateLocationSubmitButton.addEventListener('click',() => {
-    updateLocationSumbit(id, updateLocationTextField.value)
-    event.target.parentNode.innerText = `Where: ${updateLocationTextField.value}`
-  })
-  
-
-  location.append(updateLocation, updateLocationTextField, updateLocationSubmitButton)
-  infoContainer.append(boardgameName, location, date)
-  meetupCard.append(image, infoContainer)
-  card_attendeesDIV.appendChild(meetupCard)
   document.body.appendChild(card_attendeesDIV)
 
   const attendees = document.createElement('div')
@@ -149,4 +104,56 @@ function makeDeleteMeetupButton(){
   })
 
   deleteButtonDIV.appendChild(deleteMeetupButton)
+}
+
+function makeMeetupCard(meetup){
+  const meetupCard = document.createElement('a')
+  const infoContainer = document.createElement('div')
+  const image = document.createElement('img')
+  const boardgameName = document.createElement('h4')
+  const location = document.createElement('p')
+  const updateLocation = document.createElement('button')
+  const updateLocationTextField = document.createElement('input')
+  const updateLocationSubmitButton = document.createElement('button')
+  const date = document.createElement('p')
+
+  meetupCard.className="card"
+  meetupCard.style.display = "block"
+
+  infoContainer.className="cardContainer"
+  
+  image.src = meetup.boardgame.image
+
+  boardgameName.innerHTML = `<a href="http://localhost:3001/boardgameshow.html?id=${meetup.boardgame.id}">${meetup.boardgame.name}`
+  boardgameName.className = "boardGameInfo"
+
+  location.innerText = `Where: ${meetup.location}`
+  location.className = "boardGameInfo"
+
+  
+  updateLocation.innerText = "update"
+  updateLocation.addEventListener('click', () =>{
+    event.target.remove()
+    unhideUpdateTextField(updateLocationTextField)
+  })
+
+  date.innerText = `On ${meetup.date.split("-")[1]}/${meetup.date.split("-")[2]}/${meetup.date.split("-")[0]} at ${meetup.time}`
+  date.className = "boardGameInfo"
+  
+  updateLocationTextField.style.display = "none"
+  updateLocationTextField.id = "updateLocationTextField"
+
+  updateLocationSubmitButton.innerText = "submit"
+  updateLocationSubmitButton.style.display = "none"
+  updateLocationSubmitButton.id ="updateLocationSubmitButton"
+  updateLocationSubmitButton.addEventListener('click',() => {
+    updateLocationSumbit(id, updateLocationTextField.value)
+    event.target.parentNode.innerText = `Where: ${updateLocationTextField.value}`
+  })
+
+  location.append(updateLocation, updateLocationTextField, updateLocationSubmitButton)
+  infoContainer.append(boardgameName, location, date)
+  meetupCard.append(image, infoContainer)
+  // card_attendeesDIV.appendChild(meetupCard)
+  return meetupCard
 }
