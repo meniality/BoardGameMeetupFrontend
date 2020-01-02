@@ -1,4 +1,6 @@
 cardContainerDIV = document.querySelector("#cardContainerDIV")
+// localStorage.setItem("userID","")
+// localStorage.getItem("userID")
 
 fetch('http://localhost:3000/meetups')
 .then(response => response.json())
