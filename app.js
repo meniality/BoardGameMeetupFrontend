@@ -1,3 +1,4 @@
+cardContainerDIV = document.querySelector("#cardContainerDIV")
 
 fetch('http://localhost:3000/meetups')
 .then(response => response.json())
@@ -16,18 +17,23 @@ fetch('http://localhost:3000/meetups')
     meetupCard.className="card"
     meetupCard.href=`meetupshow.html?id=${meetup.id}`
     meetupCard.style="cursor: pointer"
-    infoContainer.class="cardContainer"
+    
 
     image.src = meetup.boardgame.image
     image.className="image"
 
+    boardgameName.className = "boardGameInfo"
     boardgameName.innerText = meetup.boardgame.name
+
+    location.className = "boardGameInfo"
     location.innerText = `Where: ${meetup.location}`
-    date.innerText = `On ${meetup.date} at ${meetup.time}`
-    
+
+    date.className = "boardGameInfo"
+    date.innerText = `On ${meetup.date.split("-")[1]}/${meetup.date.split("-")[2]}/${meetup.date.split("-")[0]} at ${meetup.time}`
+    meetup.date.split("-")
     infoContainer.append(boardgameName, location, date)
     meetupCard.append(image, infoContainer)
-    document.body.appendChild(meetupCard)
+    cardContainerDIV.appendChild(meetupCard)
 
   }) 
   
