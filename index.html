@@ -8,8 +8,9 @@
 </head>
 <body>
     <h1>Welcome to the Board Game Monopoly!</h1>
+    <div id="formDIV">
     <form id="newUserForm" method="POST" action="http://localhost:3000/users">
-      <label>Create a new User!</label><br><br>
+      <h3>Create a new User!</h3>
     
       <label>Enter new users name:</label><br>
       <input type="text" name='name'><br>
@@ -19,7 +20,7 @@
     </form><br>
 
     <form id="newMeetupForm" method='POST' action="http://localhost:3000/meetups">
-       <label>Create a new Meetup!</label><br>
+       <h3>Create a new Meetup!</h3>
 
        <label>Enter Location:</label>
        <input type='text' name='location'><br>
@@ -27,12 +28,13 @@
        <input type='date' name="date"> <br>
        <label>Enter Time:</label>
        <input type='time' name='time'><br>
-       <select name='boardgame_id' id="boardGamesSelect"></select>
+       <select name='boardgame_id' id="boardGamesSelect"></select><br>
        <input type='submit'>
-       
-
      </form>
-    <Label> Current Meetups</Label><br>
+    </div>
+    <h2> Current Meetups</h2><br>
+
+    <div id="cardContainerDIV"></div>
 
 </body>
 </html>

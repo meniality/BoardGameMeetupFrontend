@@ -4,13 +4,24 @@
   <meta charset="UTF-8">
   <title>Document</title>
   <script src="meetupshow.js" defer></script>
+  <link rel="stylesheet" href = "meetupshow.css">  
 </head>
 <body>
-  <form method="post" action="http://localhost:3000/user_meetups">
-    <label>Add User to Meetup</label><br>
-    <select name='user_id' id='userDropdown'></select>
-    <input type='hidden' id='meetupid' name='meetup_id'>
-    <input type="submit">
-  </form>
+
+  <div id="topRow">
+    <form action="http://localhost:3001/index.html">
+      <input type="submit" value="Home" id="homeButton"/>
+    </form>
+
+    <div id="deleteButtonDIV"></div>
+
+    <form id ="addUserForm" method="post" action="http://localhost:3000/user_meetups">
+      <h3>Add User to Meetup</h3>
+      <select name='user_id' id='userDropdown'></select>
+      <input type='hidden' id='meetupid' name='meetup_id'>
+      <input type="submit">
+    </form>
+  </div>
+
 </body>
 </html>

@@ -1,0 +1,56 @@
+#homeButton{
+  background-color: #4169E1;
+  border: none;
+  color: white;
+  padding: 10px 26px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  margin-left: 5rem;
+  margin-top: 30px;
+  cursor: pointer;
+  border-radius: 5px;
+  display: flex;
+}
+
+#topRow{
+  display: flex;
+  justify-content: space-between;
+}
+
+#addUserForm{
+  margin-right: 6rem;
+}
+
+#cardAttendees{
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.card{
+  width: fit-content;
+  margin-left: 5rem;
+  margin-top: 20px;
+}
+
+.boardGameInfo{
+  display: flex;
+  justify-content: center;
+}
+
+#attendeesDIV{
+  margin-right: 5rem;
+  margin-top: 30px;
+}
+
+#deleteButton{
+  padding: 10px 26px;
+  background-color: #4169E1;
+  color: white;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-top: 30px;
+}

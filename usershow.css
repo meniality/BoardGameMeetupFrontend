@@ -1,0 +1,16 @@
+#homeButton{
+  background-color: #4169E1;
+  border: none;
+  color: white;
+  padding: 10px 26px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  margin-left: 5rem;
+  margin-top: 39px;
+  cursor: pointer;
+  border-radius: 5px;
+  display: flex;
+}

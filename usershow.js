@@ -1,10 +1,11 @@
 const searchParams = new URLSearchParams(window.location.search)
 const id = searchParams.get('id')
 
+
 fetch(`http://localhost:3000/users/${id}`)
   .then(response => response.json())
   .then(user => {
-    console.log(user.boardgames)
+    
     const name = document.createElement('h2')
     const boardGamesOwnedLabel = document.createElement('h3')
 
@@ -22,3 +23,20 @@ fetch(`http://localhost:3000/users/${id}`)
     })
 
   })
+
+  const gameDropDown = document.querySelector('#addBoardGameSelect')
+  const user_id = document.querySelector('#user_id')
+ 
+  fetch("http://localhost:3000/boardgames")
+    .then(response => response.json())
+    .then(games => games.map(game => {
+      const gameOption = document.createElement('option')
+     
+
+      gameOption.innerText = game.name
+      gameOption.value = game.id
+
+      user_id.value = id
+      
+      gameDropDown.append(gameOption, user_id)
+    }))

@@ -5,25 +5,23 @@ const meetupID = document.querySelector('#meetupid')
 meetupID.value = id
 
 const deleteMeetupButton = document.createElement('button')
+const deleteButtonDIV = document.querySelector('#deleteButtonDIV')
 
 deleteMeetupButton.innerText = "Delete Meetup"
+deleteMeetupButton.id = "deleteButton"
 deleteMeetupButton.addEventListener('click', () => {
   deleteMeetupSubmit(id)
   window.location ="http://localhost:3001/index.html"
 })
 
-
-
-  
-
-document.body.appendChild(deleteMeetupButton)
+deleteButtonDIV.appendChild(deleteMeetupButton)
 
 
 
 fetch(`http://localhost:3000/meetups/${id}`)
 .then(response => response.json())
 .then(meetup => {
-  console.log(meetup)
+  
   const meetupCard = document.createElement('a')
   const infoContainer = document.createElement('div')
   const image = document.createElement('img')
@@ -33,18 +31,26 @@ fetch(`http://localhost:3000/meetups/${id}`)
   const updateLocationTextField = document.createElement('input')
   const updateLocationSubmitButton = document.createElement('button')
   const date = document.createElement('p')
-
+  const card_attendeesDIV = document.createElement('div')
+  const attendingH3 = document.createElement('h3')
   
+  card_attendeesDIV.id="cardAttendees"
+
+  attendingH3.innerText="Current Players Attending"
+
   meetupID.value = meetup.id
-  meetupCard.class="card"
+  meetupCard.className="card"
   meetupCard.style.display = "block"
 
-  infoContainer.class="cardContainer"
+  infoContainer.className="cardContainer"
   
   image.src = meetup.boardgame.image
   
   boardgameName.innerHTML = `<a href="http://localhost:3001/boardgameshow.html?id=${meetup.boardgame.id}">${meetup.boardgame.name}`
+  boardgameName.className = "boardGameInfo"
+
   location.innerText = `Where: ${meetup.location}`
+  location.className = "boardGameInfo"
 
   
   updateLocation.innerText = "update"
@@ -53,7 +59,8 @@ fetch(`http://localhost:3000/meetups/${id}`)
     unhideUpdateTextField(updateLocationTextField)
   })
   
-  date.innerText = `On ${meetup.date} at ${meetup.time}`
+  date.innerText = `On ${meetup.date.split("-")[1]}/${meetup.date.split("-")[2]}/${meetup.date.split("-")[0]} at ${meetup.time}`
+  date.className = "boardGameInfo"
   
   updateLocationTextField.style.display = "none"
   updateLocationTextField.id = "updateLocationTextField"
@@ -70,8 +77,13 @@ fetch(`http://localhost:3000/meetups/${id}`)
   location.append(updateLocation, updateLocationTextField, updateLocationSubmitButton)
   infoContainer.append(boardgameName, location, date)
   meetupCard.append(image, infoContainer)
-  document.body.appendChild(meetupCard)
+  card_attendeesDIV.appendChild(meetupCard)
   
+  const attendees = document.createElement('div')
+  attendees.appendChild(attendingH3)
+
+  attendees.id = "attendeesDIV"
+
   meetup.user_meetups.map(user_meetup => {
     
     const name = document.createElement('h3')
@@ -86,7 +98,10 @@ fetch(`http://localhost:3000/meetups/${id}`)
     })
     
     name.appendChild(removeUserButton)
-    document.body.appendChild(name)
+    attendees.appendChild(name)
+    card_attendeesDIV.appendChild(attendees)
+
+    document.body.appendChild(card_attendeesDIV)
   })
   
 })
@@ -131,4 +146,5 @@ fetch(`http://localhost:3000/users`)
     fetch(`http://localhost:3000/meetups/${id}`,{
       method:"delete"
     })
+    
   }
