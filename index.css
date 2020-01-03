@@ -2,7 +2,7 @@ body {background-color:#FFFAF0}
 
 #formDIV{
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   margin-bottom: 20px;
   height:180px;
   background-image: url(https://agenergy.coop/wp-content/uploads/2016/02/green-hexagons-background-Large.png);
@@ -40,6 +40,7 @@ h2{
   color: #CD853F;
   margin-top: -20px;
   background-color: rgba(100, 122, 0, 0.2);
+  font-size: 30px;
 }
 
 .card:hover{
