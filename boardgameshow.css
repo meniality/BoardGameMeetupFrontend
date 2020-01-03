@@ -1,3 +1,5 @@
+body {background-color:#FFFAF0}
+
 #homeButton{
   background-color: #4169E1;
   border: none;
@@ -13,4 +15,9 @@
   cursor: pointer;
   border-radius: 5px;
   display: flex;
+}
+
+#image{
+
+border-radius: 10px;
 }

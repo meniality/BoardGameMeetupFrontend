@@ -106,7 +106,7 @@ function makeMeetupCard(meetup){
     unhideUpdateTextField(updateLocationTextField)
   })
   
-  date.innerText = `On ${meetup.date.split("-")[1]}/${meetup.date.split("-")[2]}/${meetup.date.split("-")[0]} at ${meetup.time}`
+  date.innerText = formatDateAndTime(meetup)
   date.className = "boardGameInfo"
   
   updateLocationTextField.style.display = "none"
@@ -159,4 +159,21 @@ function deleteUserMeetup(id){
   fetch(`http://localhost:3000/user_meetups/${id}`,{
     method: 'delete'
   })
+}
+
+function formatDateAndTime(meetup){
+  let newDate = ""
+  let newTime = ""
+
+  newDate = `${meetup.date.split("-")[1]}/${meetup.date.split("-")[2]}/${meetup.date.split("-")[0]}`
+  
+  if (parseInt(meetup.time.split(':')[0]) < 12) {
+    newTime = `${meetup.time} A.M.`
+  } else if (parseInt(meetup.time.split(':')[0]) === 12) {
+    newTime = `${meetup.time} P.M`
+  } else { 
+    newTime = `${parseInt(meetup.time.split(":")[0]) - 12}:${meetup.time.split(":")[1]} P.M`
+  }
+  
+  return `On ${newDate} at ${newTime}`
 }
