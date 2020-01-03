@@ -10,14 +10,47 @@ h1{
   display: flex;
   justify-content: space-around;
   margin-bottom: 20px;
+  height:180px;
+  background-image: url(https://agenergy.coop/wp-content/uploads/2016/02/green-hexagons-background-Large.png);
+  color: #FFFAF0;
+}
+#newUserForm{
+  margin-top: 17px;
+}
+
+#locationTextInput{
+  width: 123px;
+}
+
+#dateTextInput{
+  position: relative;
+  left: 27px;
+  width: 124px;
+}
+
+#timeTextInput{
+  position: relative;
+  left: 24px;
+  width: 124px;
+}
+
+#boardGamesSelect{
+  position: relative;
+  left: 21px;
+  width: 131px;
 }
 
 h2{
   display: flex;
   justify-content: center;
   color: #CD853F;
+  margin-top: -20px;
+  background-color: rgba(100, 122, 0, 0.2);
 }
 
+.card:hover{
+  transform: scale(1.2)
+}
 
 .card {
   text-decoration: none;
@@ -28,7 +61,6 @@ h2{
   background-color: white;
   border-radius: 5px;
   margin: 5px;
-  
 }
 
 .card:hover {

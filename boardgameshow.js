@@ -11,6 +11,7 @@ fetch(`http://localhost:3000/boardgames/${id}`)
 
     name.innerText = game.name
     image.src = game.image
+    image.id = "image"
 
     name_pic.append(name, image)
 
@@ -21,7 +22,6 @@ fetch(`http://localhost:3000/boardgames/${id}`)
     description.innerText = game.description
 
     description_div.appendChild(description)
-
 
     const info_div = document.createElement('div')
     const info_list_left = document.createElement('ul')

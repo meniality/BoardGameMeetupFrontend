@@ -2,34 +2,36 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Board Game Monopoly</title>
+  <title>Board Game Meetup</title>
   <script src='app.js' defer></script>
   <link rel="stylesheet" href = "index.css">  
 </head>
 <body>
-    <h1>Welcome to the Board Game Monopoly!</h1>
+    <!-- <h1>Welcome to the Board Game Meetup!</h1> -->
     <div id="formDIV">
+      
     <form id="newUserForm" method="POST" action="http://localhost:3000/users">
       <h3>Create a new User!</h3>
     
       <label>Enter new users name:</label><br>
       <input type="text" name='name'><br>
     
-      <input type="submit" onclick="alert('User Created!')">
+      <input type="submit" onclick="alert('New User Created!')">
     
     </form><br>
-
+    <h1>Welcome to the Board Game Meetup!</h1>
     <form id="newMeetupForm" method='POST' action="http://localhost:3000/meetups">
        <h3>Create a new Meetup!</h3>
 
        <label>Enter Location:</label>
-       <input type='text' name='location'><br>
+       <input id="locationTextInput" type='text' name='location'><br>
        <label>Enter Date:</label>
-       <input type='date' name="date"> <br>
+       <input id= "dateTextInput" type='date' name="date"> <br>
        <label>Enter Time:</label>
-       <input type='time' name='time'><br>
+       <input id="timeTextInput" type='time' name='time'><br>
+       <label>Boardgame:</label>
        <select name='boardgame_id' id="boardGamesSelect"></select><br>
-       <input type='submit'>
+       <input type='submit'><br>
      </form>
     </div>
     <h2> Current Meetups</h2><br>

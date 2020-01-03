@@ -30,8 +30,7 @@ fetch('http://localhost:3000/meetups')
     location.innerText = `Where: ${meetup.location}`
 
     date.className = "boardGameInfo"
-    date.innerText = `On ${meetup.date.split("-")[1]}/${meetup.date.split("-")[2]}/${meetup.date.split("-")[0]} at ${meetup.time}`
-    meetup.date.split("-")
+    date.innerText = formatDateAndTime(meetup)
     infoContainer.append(boardgameName, location, date)
     meetupCard.append(image, infoContainer)
     cardContainerDIV.appendChild(meetupCard)
@@ -50,3 +49,22 @@ fetch('http://localhost:3000/meetups')
 
       boardGameDropdown.appendChild(gameOption)
     }))
+
+    function formatDateAndTime(meetup){
+      let newDate = ""
+      let newTime = ""
+
+      newDate = `${meetup.date.split("-")[1]}/${meetup.date.split("-")[2]}/${meetup.date.split("-")[0]}`
+      
+      if (parseInt(meetup.time.split(':')[0]) < 12) {
+        newTime = `${meetup.time} A.M.`
+      } else if (parseInt(meetup.time.split(':')[0]) === 12) {
+        newTime = `${meetup.time} P.M`
+      } else { 
+        newTime = `${parseInt(meetup.time.split(":")[0]) - 12}:${meetup.time.split(":")[1]} P.M`
+      }
+      
+      return `On ${newDate} at ${newTime}`
+    }
+
+    
