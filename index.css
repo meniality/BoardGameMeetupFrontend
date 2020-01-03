@@ -1,14 +1,8 @@
 body {background-color:#FFFAF0}
 
-
-h1{
-  display: flex;
-  justify-content: center;
-}
-
 #formDIV{
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   margin-bottom: 20px;
   height:180px;
   background-image: url(https://agenergy.coop/wp-content/uploads/2016/02/green-hexagons-background-Large.png);
