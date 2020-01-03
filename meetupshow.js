@@ -72,7 +72,6 @@ function makeDeleteMeetupButton(){
   deleteMeetupButton.addEventListener('click', () => {
     deleteMeetupSubmit(id)
   })
-  
   deleteButtonDIV.appendChild(deleteMeetupButton)
 }
 
@@ -86,6 +85,7 @@ function makeMeetupCard(meetup){
   const updateLocationTextField = document.createElement('input')
   const updateLocationSubmitButton = document.createElement('button')
   const date = document.createElement('p')
+  const currentNumOfPlayers = document.createElement('p')
   
   meetupCard.className="card"
   meetupCard.style.display = "block"
@@ -93,6 +93,7 @@ function makeMeetupCard(meetup){
   infoContainer.className="cardContainer"
   
   image.src = meetup.boardgame.image
+  image.id="image"
   
   boardgameName.innerHTML = `<a href="http://localhost:3001/boardgameshow.html?id=${meetup.boardgame.id}">${meetup.boardgame.name}`
   boardgameName.className = "boardGameInfo"
@@ -108,6 +109,9 @@ function makeMeetupCard(meetup){
   
   date.innerText = formatDateAndTime(meetup)
   date.className = "boardGameInfo"
+
+  currentNumOfPlayers.innerText = `${meetup.user_meetups.length}/${meetup.boardgame.max_players} Players`
+  currentNumOfPlayers.className = "boardGameInfo"
   
   updateLocationTextField.style.display = "none"
   updateLocationTextField.id = "updateLocationTextField"
@@ -121,7 +125,7 @@ function makeMeetupCard(meetup){
   })
   
   location.append(updateLocationButton, updateLocationTextField, updateLocationSubmitButton)
-  infoContainer.append(boardgameName, location, date)
+  infoContainer.append(boardgameName, location, date, currentNumOfPlayers)
   meetupCard.append(image, infoContainer)
   
   return meetupCard
@@ -170,9 +174,9 @@ function formatDateAndTime(meetup){
   if (parseInt(meetup.time.split(':')[0]) < 12) {
     newTime = `${meetup.time} A.M.`
   } else if (parseInt(meetup.time.split(':')[0]) === 12) {
-    newTime = `${meetup.time} P.M`
+    newTime = `${meetup.time} P.M.`
   } else { 
-    newTime = `${parseInt(meetup.time.split(":")[0]) - 12}:${meetup.time.split(":")[1]} P.M`
+    newTime = `${parseInt(meetup.time.split(":")[0]) - 12}:${meetup.time.split(":")[1]} P.M.`
   }
   
   return `On ${newDate} at ${newTime}`

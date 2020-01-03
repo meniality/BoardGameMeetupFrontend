@@ -13,6 +13,7 @@ fetch('http://localhost:3000/meetups')
     const boardgameName = document.createElement('h4')
     const location = document.createElement('p')
     const date = document.createElement('p')
+    const currentNumOfPlayers= document.createElement('p')
     
 
     meetupCard.className="card"
@@ -31,7 +32,11 @@ fetch('http://localhost:3000/meetups')
 
     date.className = "boardGameInfo"
     date.innerText = formatDateAndTime(meetup)
-    infoContainer.append(boardgameName, location, date)
+
+    currentNumOfPlayers.innerText = `${meetup.users.length}/${meetup.boardgame.max_players} Players`
+    currentNumOfPlayers.className = "boardGameInfo"
+    
+    infoContainer.append(boardgameName, location, date, currentNumOfPlayers)
     meetupCard.append(image, infoContainer)
     cardContainerDIV.appendChild(meetupCard)
   })  
@@ -59,9 +64,9 @@ fetch('http://localhost:3000/meetups')
       if (parseInt(meetup.time.split(':')[0]) < 12) {
         newTime = `${meetup.time} A.M.`
       } else if (parseInt(meetup.time.split(':')[0]) === 12) {
-        newTime = `${meetup.time} P.M`
+        newTime = `${meetup.time} P.M.`
       } else { 
-        newTime = `${parseInt(meetup.time.split(":")[0]) - 12}:${meetup.time.split(":")[1]} P.M`
+        newTime = `${parseInt(meetup.time.split(":")[0]) - 12}:${meetup.time.split(":")[1]} P.M.`
       }
       
       return `On ${newDate} at ${newTime}`
