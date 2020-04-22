@@ -1,5 +1,8 @@
 This is a board game scheduling/ info app that was built over 5 days as a project for FlatIron Schools. 
 
+youtube video:
+  * https://youtu.be/KafJbb7Uj0c
+
 Within this project I built a custom back end that runs on Ruby on rails and pulled in 100 board games from an outside API. 
 I used vanilla javascript, html, and css to style the pages.
 
